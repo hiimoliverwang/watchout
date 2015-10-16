@@ -15,11 +15,12 @@ function update(data) {
   // Join new data with old elements, if any.
   var enemies = gameBoard.selectAll(".enemy")
       .data(data);
-      console.log(enemies);
+      //console.log(enemies);
 
   // UPDATE
   // Update old elements as needed.
-  enemies.transition().duration(500).attr('cx',function (d){return Math.random()*width})
+  enemies.transition().duration(500).
+  attr('cx',function (d){return Math.random()*width})
         .attr('cy',function (d){return Math.random()*height});
 
   //enemy.attr("class", "update");
@@ -33,10 +34,12 @@ function update(data) {
       .attr('cx',function (d){return d.cx;})
       .attr('cy',function (d){return d.cy;})
       .attr('r',20)
-      .style('fill','red');
+      .style('fill','url(#image)');
       // .style('color', 'red');
       // .attr("x", function(d, i) { return i * 32; })
       // .attr("dy", ".35em");
+
+  
 
   // enemy.text('hello');
 
@@ -65,15 +68,20 @@ var createEnemies  = function (number){
     });
   };
 var enemy = createEnemies(10);
-console.log(enemy);
+//console.log(enemy);
 update(enemy);
+var drag = d3.behavior.drag()  
+             .on('drag', function() { player.attr('cx', d3.event.x)
+                                            .attr('cy', d3.event.y); })
+             .on('dragend', function() { player.style('fill', 'black'); });
+  var player = gameBoard.append('svg:circle')
+                .data([{ x: (width / 2), y: (height / 2), r: 20 }])
+                .attr('class', 'player')
+                .style('fill','black')
+                .attr('cx',function(d){return d.x})
+                .attr('cy',function(d){return d.y})
+                .attr('r', function(d) { return d.r; })
+                .call(drag);
 setInterval(update,1000,enemy);
-
-
-
-// var enemies = function (enemy_data){
-//             gameBoard.selectAll('circle.enemy')
-//             .data(enemy_data, function (d){return d.id} )
-//           };
 
 

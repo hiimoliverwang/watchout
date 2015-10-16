@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="lib/underscore.js" charset="utf-8"></script>
+    <script src="lib/d3.js" charset="utf-8"></script>
     <link rel='stylesheet' type='css' href='styles.css'>
   </head>
   <body>
@@ -10,9 +12,12 @@
       <div class="current">Current score: <span>0</span></div>
       <div class="collisions">Collisions: <span>0</span></div>
     </div>
+    <defs>
+    <pattern id="image" patternUnits="userSpaceOnUse" height="50" width="50">
+        <image x="0" y="0" height="50" width="50" xlink:href="asteroid.png"></image>
+      </pattern>
+    </defs>
     <div class="board"><div class="mouse"></div></div>
-    <script src="lib/d3.js" charset="utf-8"></script>
-    <script src="lib/underscore.js" charset="utf-8"></script>
     <script src='watchout.js'></script>
     <!-- // <script src='collider.js'></script> -->
   </body>

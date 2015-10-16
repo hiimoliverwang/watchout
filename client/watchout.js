@@ -15,10 +15,14 @@ function update(data) {
   // Join new data with old elements, if any.
   var enemies = gameBoard.selectAll(".enemy")
       .data(data);
+      console.log(enemies);
 
   // UPDATE
   // Update old elements as needed.
-  //text.attr("class", "update");
+  enemies.transition().duration(500).attr('cx',function (d){return Math.random()*width})
+        .attr('cy',function (d){return Math.random()*height});
+
+  //enemy.attr("class", "update");
 
   // ENTER
   // Create new elements as needed.
@@ -63,6 +67,7 @@ var createEnemies  = function (number){
 var enemy = createEnemies(10);
 console.log(enemy);
 update(enemy);
+setInterval(update,1000,enemy);
 
 
 

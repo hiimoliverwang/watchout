@@ -22,11 +22,15 @@ function update(data) {
 
   // ENTER
   // Create new elements as needed.
+// d3.select('svg').append('')
+
   var enemy = enemies.enter().append("svg:circle")
       .attr("class", "enemy")
-      .attr('cx',100)
-      .attr('cy',100)
-      .attr('r',50);
+      .attr('cx',function (d){return d.cx;})
+      .attr('cy',function (d){return d.cy;})
+      .attr('r',20)
+      .style('fill','red');
+      // .style('color', 'red');
       // .attr("x", function(d, i) { return i * 32; })
       // .attr("dy", ".35em");
 
@@ -43,15 +47,24 @@ function update(data) {
   //  text.exit().remove();
 }
 
-update([0]);
-// var createEnemies  = function (){
+var createEnemies  = function (number){
+      var arr = _.range(number);
+      return arr.map(function(i){
+        var obj = 
+        {
+            id : i,
+            cx : Math.random()*width,
+            cy : Math.random()*height
+        };
+        return obj;
 
-//       return [0,1,2].map(function(i){
-//       id: i
-//       x: Math.random()*100
-//       y: Math.random()*100
-//     });
-//   };
+    });
+  };
+var enemy = createEnemies(10);
+console.log(enemy);
+update(enemy);
+
+
 
 // var enemies = function (enemy_data){
 //             gameBoard.selectAll('circle.enemy')
@@ -59,4 +72,3 @@ update([0]);
 //           };
 
 
-// var enemy = createEnemies;

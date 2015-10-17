@@ -1,18 +1,11 @@
-/* your beautiful css styling goes here! */
+body{
+  background-image: url('coolbackground.jpg')
+}
+.scoreboard{
+  color:white;
+  font-size: 30px;
+}
 
-
-/*enemy {
-  height = 50;
-  width = 50;
-  background-image: url('asteroid.png')
-  border:10px solid red;
-  border-radius:10px;
-  position:absolute;
-}*/
-/* Note: an asteroid image is included in this repo.
-Feel free to use it if you like. */
-
-/*svg .svg{
-  fill:red;
-}*/
-
+.boarder{
+  border: white 5px solid;
+}

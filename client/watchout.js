@@ -14,7 +14,8 @@ var moveSpeed = 1500;
 
 gameBoard = d3.select('.board').append('svg:svg')
                 .attr('width', width)
-                .attr('height', height);
+                .attr('height', height)
+                .attr('class', 'boarder');
 
 
 
@@ -43,7 +44,7 @@ function update(data) {
       }
       d3.select('.highscore').text('High score: ' + Math.floor(highScore));
       d3.select('.current').text('Current score: ' + Math.floor(currentScore));
-      d3.select('.collisions').text('Collisions: ' + countCollisions);
+      d3.select('.collisions').text('Collisions: ' + Math.floor(countCollisions/10));
 
     }
     
@@ -116,7 +117,7 @@ var player = gameBoard.append('svg:circle')
 
 
   
-
+update(enemy);
 setInterval(update,moveTime,enemy);
   // UPDATE
   // Update old elements as needed.
